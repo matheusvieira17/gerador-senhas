@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+footer {
+  margin-top: 3.2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+footer a {
+  color: inherit;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.2rem;
+}
+
+#social-link {
+  font-size: 2.4rem;
+}
+
+#social-link:first-child {
+  color: royalblue;
+}
