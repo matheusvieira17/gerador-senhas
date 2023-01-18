@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerador de senhas</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/container.css" />
+    <link rel="stylesheet" href="css/footer.css" />
   </head>
   <body>
     <main class="container">
-      <h2>Gerador de senhas</h2>
+      <h1>Gerador de senhas</h1>
       <section class="password-container">
         <span id="password-result"> </span>
         <button id="clipboard-btn">
-          <i class="bi bi-clipboard-check"></i>
+          <i class="bi bi-clipboard-check" id="copy-btn"></i>
         </button>
       </section>
 
@@ -35,18 +36,38 @@
         </div>
 
         <div class="setting">
-          <label for="upperLetter"> Incluir letras maiúsculas
-          </label>
+          <label for="upperLetter"> Incluir letras maiúsculas </label>
           <input type="checkbox" id="upperLetter" checked />
         </div>
 
         <div class="setting">
-            <label for="lowerLetter">Incluir letras minúsculas</label>
-            <input type="checkbox" id="lowerLetter" checked>
+          <label for="lowerLetter">Incluir letras minúsculas</label>
+          <input type="checkbox" id="lowerLetter" checked />
         </div>
       </section>
-      <button>Gerar senha</button>
+      <button id="generate-btn">
+        <i class="bi bi-arrow-repeat"></i>
+        Gerar senha
+      </button>
     </main>
+    <footer>
+      <p>Desenvolvido por <span>Matheus Vieira Ferreira</span></p>
+      <article class="social-links">
+        <div id="social-link">
+          <a
+            href="https://www.linkedin.com/in/matheus-vieira-ferreira-806767229/"
+            target="_blank"
+          >
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </div>
+        <div id="social-link">
+          <a href="https://github.com/matheusvieira17" target="_blank">
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
+      </article>
+    </footer>
   </body>
   <script src="gerador-senhas.js"></script>
 </html>
