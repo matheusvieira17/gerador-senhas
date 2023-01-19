@@ -16,9 +16,9 @@ function getUpperLetter() {
 }
 
 function getRandomNumber() {
-    const initialNumber = 48
-    const numberMathFormula = Math.floor(Math.random() * 10)
-    return charCode((numberMathFormula) + initialNumber)
+  const initialNumber = 48;
+  const numberMathFormula = Math.floor(Math.random() * 10);
+  return charCode(numberMathFormula + initialNumber);
 }
 
 function getRandomSymbols() {
@@ -28,9 +28,26 @@ function getRandomSymbols() {
 }
 
 const passwordResult = document.querySelector("#password-result");
-const lengthLabel = document.querySelector("#length");
-const numberLabel = document.querySelector("#numbers");
-const symbolsLabel = document.querySelector("symbols");
-const upperLetterLabel = document.querySelector("#upperLetter");
-const lowerLetterLabel = document.querySelector("#lowerLetter");
+const lengthInput = document.querySelector("#length");
+const numberInput = document.querySelector("#numbers");
+const symbolsInput = document.querySelector("#symbols");
+const upperLetterInput = document.querySelector("#upperLetter");
+const lowerLetterInput = document.querySelector("#lowerLetter");
 const generateBtn = document.querySelector("#generate-btn");
+
+const randomFunctions = {
+  lower: getLowerLetter,
+  upper: getUpperLetter,
+  number: getRandomNumber,
+  symbols: getRandomSymbols,
+};
+
+generateBtn.addEventListener("click", () => verifySettings());
+
+function verifySettings() {
+  const length = Number(lengthInput.value);
+  const hasNumber = numberInput.checked;
+  const hasSymbol = symbolsInput.checked;
+  const hasUpper = upperLetterInput.checked;
+  const hasLower = lowerLetterInput.checked;
+}
