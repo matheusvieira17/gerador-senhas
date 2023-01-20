@@ -52,10 +52,10 @@ function verifySettings() {
   const hasLower = lowerLetterInput.checked;
 
   passwordResult.innerHTML = generatePassword(
+    hasLower,
+    hasUpper,
     hasNumber,
     hasSymbols,
-    hasUpper,
-    hasLower,
     length
   );
 }
@@ -82,4 +82,18 @@ function generatePassword(lower, upper, number, symbols, length) {
 
   const generatedPassword = password.slice(0, length);
   return generatedPassword;
+}
+
+const clipboardBtn = document.querySelector("#clipboard-btn")
+clipboardBtn.addEventListener("click", copyPassword)
+
+function copyPassword() {
+  const password = passwordResult.innerHTML
+
+  if (!password) {
+    return
+  } else {
+    navigator.clipboard.writeText(password)
+  }
+  alert (`Senha copiada: ${password}`)
 }
