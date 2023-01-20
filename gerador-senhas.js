@@ -42,12 +42,44 @@ const randomFunctions = {
   symbols: getRandomSymbols,
 };
 
-generateBtn.addEventListener("click", () => verifySettings());
+generateBtn.addEventListener("click", verifySettings);
 
 function verifySettings() {
   const length = Number(lengthInput.value);
   const hasNumber = numberInput.checked;
-  const hasSymbol = symbolsInput.checked;
+  const hasSymbols = symbolsInput.checked;
   const hasUpper = upperLetterInput.checked;
   const hasLower = lowerLetterInput.checked;
+
+  passwordResult.innerHTML = generatePassword(
+    hasNumber,
+    hasSymbols,
+    hasUpper,
+    hasLower,
+    length
+  );
+}
+
+function generatePassword(lower, upper, number, symbols, length) {
+  let password = "";
+  const numberOfSettings = lower + upper + number + symbols;
+  const arrayOfSettings = [{ lower }, { upper }, { number }, { symbols }];
+
+  const checkedSettings = arrayOfSettings.filter(
+    (setting) => Object.values(setting)[0]
+  );
+
+  if (numberOfSettings === 0) {
+    return;
+  } else {
+    for (let counter = 0; counter < length; counter += numberOfSettings) {
+      checkedSettings.forEach((setting) => {
+        const funcName = Object.keys(setting)[0];
+        password += randomFunctions[funcName]();
+      });
+    }
+  }
+
+  const generatedPassword = password.slice(0, length);
+  return generatedPassword;
 }
