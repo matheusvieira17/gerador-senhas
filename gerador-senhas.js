@@ -50,7 +50,6 @@ function verifySettings() {
   const hasSymbols = symbolsInput.checked;
   const hasUpper = upperLetterInput.checked;
   const hasLower = lowerLetterInput.checked;
-
   passwordResult.innerHTML = generatePassword(
     hasLower,
     hasUpper,
@@ -61,7 +60,8 @@ function verifySettings() {
 }
 
 function generatePassword(lower, upper, number, symbols, length) {
-  let password = "";
+  const empty = "";
+  let password = empty;
   const numberOfSettings = lower + upper + number + symbols;
   const arrayOfSettings = [{ lower }, { upper }, { number }, { symbols }];
 
@@ -70,7 +70,7 @@ function generatePassword(lower, upper, number, symbols, length) {
   );
 
   if (numberOfSettings === 0) {
-    return;
+    return empty;
   } else {
     for (let counter = 0; counter < length; counter += numberOfSettings) {
       checkedSettings.forEach((setting) => {
@@ -84,16 +84,16 @@ function generatePassword(lower, upper, number, symbols, length) {
   return generatedPassword;
 }
 
-const clipboardBtn = document.querySelector("#clipboard-btn")
-clipboardBtn.addEventListener("click", copyPassword)
+const clipboardBtn = document.querySelector("#clipboard-btn");
+clipboardBtn.addEventListener("click", copyPassword);
 
 function copyPassword() {
-  const password = passwordResult.innerHTML
+  const password = passwordResult.innerHTML;
 
   if (!password) {
-    return
+    return;
   } else {
-    navigator.clipboard.writeText(password)
+    navigator.clipboard.writeText(password);
   }
-  alert (`Senha copiada: ${password}`)
+  alert(`Senha copiada: ${password}`);
 }
