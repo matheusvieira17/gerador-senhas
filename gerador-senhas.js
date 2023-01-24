@@ -90,7 +90,7 @@ clipboardBtn.addEventListener("click", copyPassword);
 function copyPassword() {
   const password = passwordResult.innerHTML;
 
-  if (!password) {
+  if (!clipboardBtn.click()) {
     return;
   } else {
     navigator.clipboard.writeText(password);
