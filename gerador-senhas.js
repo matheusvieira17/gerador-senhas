@@ -74,26 +74,25 @@ function generatePassword(lower, upper, number, symbols, length) {
   } else {
     for (let counter = 0; counter < length; counter += numberOfSettings) {
       checkedSettings.forEach((setting) => {
-        const funcName = Object.keys(setting)[0];
-        password += randomFunctions[funcName]();
+        const nameOfTheFunctions = Object.keys(setting)[0];
+        password += randomFunctions[nameOfTheFunctions]();
       });
+    }
+
+    const clipboardBtn = document.querySelector("#clipboard-btn");
+    clipboardBtn.addEventListener("click", copyPassword);
+
+    function copyPassword() {
+      password = passwordResult.innerHTML;
+      if (!password) {
+        return;
+      } else {
+        navigator.clipboard.writeText(password);
+      }
+      alert(`Senha ${password} copiada`);
     }
   }
 
   const generatedPassword = password.slice(0, length);
   return generatedPassword;
-}
-
-const clipboardBtn = document.querySelector("#clipboard-btn");
-clipboardBtn.addEventListener("click", copyPassword);
-
-function copyPassword() {
-  const password = passwordResult.innerHTML;
-
-  if (!clipboardBtn.click()) {
-    return;
-  } else {
-    navigator.clipboard.writeText(password);
-  }
-  alert(`Senha copiada: ${password}`);
 }
